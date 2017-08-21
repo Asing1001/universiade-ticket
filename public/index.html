@@ -47,7 +47,8 @@
                     <div class="col-md-3" v-for="status in sportStatus">
                         <p>
                             <div>{{status.date}}</div>{{status.place}}</p>
-                        <p><a class="btn btn-primary" :href="status.url" role="button">購票</a></p>
+                        <p v-if="status.hasTicket"><a class="btn btn-primary" :href="status.url" role="button">購票</a></p>
+                        <p v-if="!status.hasTicket"><button class="btn btn-secondary" role="button" disabled>已售完</button></p>
                     </div>
                 </div>
             </div>
