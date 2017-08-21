@@ -41,4 +41,4 @@ setInterval(async () => {
         redisClient.set(redisKey, JSON.stringify(newStatus))
     }
     console.timeEnd('[Scheduler] getAllTicketStatus');
-}, 3600000)
+}, 1800000)
