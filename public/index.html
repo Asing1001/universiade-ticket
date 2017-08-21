@@ -11,11 +11,30 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.10&appId=546618865728828";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
         <a class="navbar-brand" href="#">Universiade Ticket Checker</a>
     </nav>
 
     <div class="container" id="app">
+        <div class="text-right">
+            <div class="fb-like" data-href="https://ticket.mvrater.com/" data-layout="button_count" data-action="like" data-size="small"
+                data-show-faces="true" data-share="true"></div>
+            <!-- Place this tag where you want the button to render. -->
+            <span style="vertical-align:sub">
+                <a class="github-button" href="https://github.com/asing1001/universiade-ticket" data-icon="octicon-star" data-show-count="true"
+                    aria-label="Star asing1001/universiade-ticket on GitHub">Star</a>
+            </span>
+        </div>
         <!-- <form class="form-inline card-body">
             <label class="mr-sm-2" for="inlineFormCustomSelect">時間</label>
             <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" v-model="selectedDate" @change="filterData(selectedDate, 'date')">
@@ -68,6 +87,8 @@
     <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
     <script src="main.js"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>
