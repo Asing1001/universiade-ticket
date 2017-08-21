@@ -1,6 +1,5 @@
 const { getCheerio$ } = require('./util');
 const fetch = require("isomorphic-fetch");
-const { outputJson } = require('fs-extra');
 
 const rootUrl = 'https://tickets.2017.taipei'
 const distFolder = 'dist/';
@@ -10,9 +9,8 @@ const getAllTicketStatus = async () => {
         const ticketStatus = await getTicketStatus(('0' + i).slice(-2));
         console.log(`Get ticket status for ${ticketStatus[0].sport}`)
         allStatus = allStatus.concat(ticketStatus)
-        outputJson(`${distFolder}${ticketStatus[0].sport}.json`, ticketStatus, { spaces: 2 })
-        await outputJson(`${distFolder}ticketStatus.json`, allStatus.filter(status => status.hasTicket))
     }
+    return allStatus;
 }
 
 const getTicketStatus = (sportsId) => {
