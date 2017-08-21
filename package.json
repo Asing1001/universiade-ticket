@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.4",
+    "fs-extra": "^4.0.1",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
