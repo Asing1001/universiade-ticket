@@ -1,4 +1,8 @@
 {
+  "name": "universiade-ticket",
+  "engines": {
+    "node": "8.4.0"
+  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.15.4",

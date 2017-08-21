@@ -10,11 +10,15 @@ app.get('/api/ticketstatus', (req, res, next) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send("Something went wrong ! Error: " + err.message);
+});
+
 const port = process.env.PORT || 8080;
 app.listen(port, function () {
     console.log('app running on port', port);
 })
-console.log(`app listen on ${port}`)
 
 setInterval(async () => {
     console.time('[Scheduler] getAllTicketStatus');
