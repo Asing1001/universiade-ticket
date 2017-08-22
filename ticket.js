@@ -6,8 +6,10 @@ const distFolder = 'dist/';
 const getAllTicketStatus = async () => {
     let allStatus = [];
     for (var i = 1; i <= 22; i++) {
-        const ticketStatus = await getTicketStatus(('0' + i).slice(-2));
-        console.log(`Get ticket status for ${ticketStatus[0].sport}`)
+        const sportId = ('0' + i).slice(-2);
+        const ticketStatus = await getTicketStatus(sportId);
+        const sportName = ticketStatus.length > 0 ? ticketStatus[0].sport : sportId;
+        console.log(`Get ticket status for ${sportName}`);
         allStatus = allStatus.concat(ticketStatus)
     }
     return allStatus;
