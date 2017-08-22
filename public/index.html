@@ -56,7 +56,14 @@
         <!-- Example row of columns -->
         <section class="card" v-for="(sportStatus, key) in getTicketStatus()">
             <div class="card-body">
-                <h4>{{key}}</h4>
+                <h4>
+                    {{key}}
+                    <small>
+                        <a target="_blank" :href="'https://nthspace.github.io/universiade/#/schedule/'+encodeURIComponent(key)">
+                            賽程
+                        </a>
+                    </small>
+                </h4>
                 <div class="row">
                     <div class="col-md-3" v-for="status in sportStatus">
                         <p>
