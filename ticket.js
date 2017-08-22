@@ -23,13 +23,11 @@ const getTicketStatus = (sportsId) => {
                 const $tr = $(tr);
                 const $tds = $tr.find('td')
                 const ticketUrl = rootUrl + $tr.find('button').attr('onclick').split('\'')[1];
-                const ticketResponse = await fetch(ticketUrl)
-                const ticketStatus = await ticketResponse.text();
                 return {
                     date: $tds.eq(0).text(),
                     sport: $tds.eq(1).text(),
                     place: $tds.eq(2).text(),
-                    hasTicket: ticketStatus.indexOf('本活動已售完') === -1,
+                    hasTicket: !$tds.last().text().includes('選購一空'),
                     url: ticketUrl
                 }
             }));
