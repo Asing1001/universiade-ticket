@@ -1,29 +1,19 @@
 var app = new Vue({
     el: '#app',
     data: {
-        ticketStatus: {},
-        filteredTicketStatus: {},
-        sports: {},
-        places: {},
-        dates: {},
-        selectedPlace: '',
-        selectedSport: '',
-        selectedDate: ''
+        allTicketStatus: [],
+        hideSellOut: false,
     },
     created: function () {
         var self = this;
         $.get('/api/ticketStatus').then(function (json) {
-            self.ticketStatus = _.groupBy(json, 'sport');
-            json.forEach(function (status) {
-                self.sports[status.sport] = true;
-                self.places[status.place] = true;
-                self.dates[status.date] = true;
-            })
+            self.allTicketStatus = json;
         })
     },
-    method: {
-        filterData: function () {
-            // this.
+    methods: {
+        getTicketStatus: function () {
+            const allData = this.allTicketStatus;
+            return this.hideSellOut ? _.chain(allData).filter('hasTicket').groupBy('sport').value() : _.groupBy(allData, 'sport');
         }
     }
 })
