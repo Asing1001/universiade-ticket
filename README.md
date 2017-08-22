@@ -1,3 +1,18 @@
 # Universiade Ticket
 
-為了讓世大運訂票更方便而做的
+為了讓世大運訂票更方便而做的，台灣加油！
+
+## Developement
+
+```bash
+# install package
+npm install
+
+# start
+npm start
+```
+
+## Requirements
+
+* Redis
+* Nodejs v8.4
