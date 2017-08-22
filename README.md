@@ -16,3 +16,7 @@ npm start
 
 * Redis
 * Nodejs v8.4
+
+## Contributing
+
+Contribution is welcome, feel free to open an issue and fork. Waiting for your pull request.
