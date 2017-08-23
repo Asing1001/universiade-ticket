@@ -11,6 +11,8 @@
     <title>Universiade Ticket - 世大運售票即時資訊</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
+    <style>[v-cloak] { display:none; }</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
 </head>
 
 <body>
@@ -39,7 +41,7 @@
         <a class="navbar-brand" href="#">Universiade Ticket Checker</a>
     </nav>
 
-    <div class="container" id="app">
+    <div class="container" id="app" v-cloak>
         <div class="d-flex align-items-center justify-content-end">
             <div class="fb-like d-flex" style="margin-right:.5em" data-href="https://ticket.mvrater.com/" data-layout="button_count"
                 data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
@@ -129,7 +131,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
     <script src="main.js?v=1708231345"></script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
