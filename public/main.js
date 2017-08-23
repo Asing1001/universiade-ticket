@@ -14,7 +14,7 @@ var app = new Vue({
     },
     methods: {
         getTicketStatus: function () {
-            const self = this;
+            var self = this;
             return _.chain(self.allTicketStatus)
                 .filter(function (data) {
                     return !self.selectedSport || data.sport === self.selectedSport
