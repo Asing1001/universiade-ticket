@@ -30,7 +30,7 @@ const getAllTicketStatusWithSchedule = async () => {
                 const schedules = JSON.parse(strSchedule) || [];
                 ticketStatus = ticketStatus.map(t => {
                     t.schedules = schedules
-                        .filter(({ date, sport, place }) => t.date === date && t.sport === sport && t.place === t.place)
+                        .filter(({ date, sport, place }) => t.date === date && t.sport === sport && t.place === place)
                         .map(({ item, gender, stage, time }) => ({ item, gender, stage, time }));
                     return t;
                 })
