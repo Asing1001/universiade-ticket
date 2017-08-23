@@ -31,13 +31,21 @@
         ga('create', 'UA-89564631-3', 'auto');
         ga('send', 'pageview');
     </script>
-    <div id="fb-root"></div>
     <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '122842011697190',
+                xfbml: true,
+                version: 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+        };
+
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
+            if (d.getElementById(id)) { return; }
             js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.10&appId=546618865728828";
+            js.src = "//connect.facebook.net/zh_TW/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
@@ -57,14 +65,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://www.2017.taipei/mode/imgList/a6cabbfa-0903-4d54-a42b-9f6a4769e172">新聞</a>
-                </li>                
+                </li>
             </ul>
         </div>
     </nav>
 
     <div class="container" id="app" v-cloak>
         <div class="d-flex align-items-center justify-content-end">
-            <div class="fb-like d-flex" style="margin-right:.5em" data-href="https://ticket.mvrater.com/" data-layout="button_count"
+                <div class="fb-like d-flex" style="margin-right:.5em" data-href="https://ticket.mvrater.com/" data-layout="button_count"
                 data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
             <!-- Place this tag where you want the button to render. -->
             <a class="github-button" href="https://github.com/asing1001/universiade-ticket" data-icon="octicon-star" data-show-count="true"
@@ -107,8 +115,8 @@
                     <div class="modal-header">
                         <h6 class="modal-title" id="scheduleModalLabel">{{selectedTicket.date}} - {{selectedTicket.place}}</h6>
                         <button style="margin-top:-5px;font-size:1.8em" type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         </div>
                         <div class="modal-body">
                             <table class="table table-sm table-striped">
