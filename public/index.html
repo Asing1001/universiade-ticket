@@ -11,7 +11,11 @@
     <title>Universiade Ticket - 世大運售票即時資訊</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
-    <style>[v-cloak] { display:none; }</style>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
 </head>
 
@@ -39,6 +43,23 @@
     </script>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
         <a class="navbar-brand" href="#">Universiade Ticket Checker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://nthspace.github.io/universiade/#/schedule/">所有賽程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.2017.taipei/home">官方網站</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.2017.taipei/home">新聞</a>
+                </li>                
+            </ul>
+        </div>
     </nav>
 
     <div class="container" id="app" v-cloak>
@@ -88,41 +109,41 @@
                         <button style="margin-top:-5px;font-size:1.8em" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table table-sm table-striped">
-                            <thead>
-                                <tr>
-                                    <th>時間</th>
-                                    <th>項目</th>
-                                    <th>男/女</th>
-                                    <th>賽事階段</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(schedule, index) in selectedTicket.schedules">
-                                    <td>{{schedule.time}}</td>
-                                    <td>{{schedule.item}}</td>
-                                    <td>{{schedule.gender}}</td>
-                                    <td>{{schedule.stage}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>時間</th>
+                                        <th>項目</th>
+                                        <th>男/女</th>
+                                        <th>賽事階段</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(schedule, index) in selectedTicket.schedules">
+                                        <td>{{schedule.time}}</td>
+                                        <td>{{schedule.item}}</td>
+                                        <td>{{schedule.gender}}</td>
+                                        <td>{{schedule.stage}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <hr>
+            <hr>
 
-        <footer>
-            <p>
-                <a class="col-md-3 col-xs-12 small" href="https://www.paddingleft.com">&copy; Created by Sing Ming Chen</a>
-                <div class="col-md-3 col-xs-12 small">其他開源專案 - <a href="https://www.mvrater.com">Movie Rater</a></div>
-            </p>
-        </footer>
+            <footer>
+                <p>
+                    <a class="col-md-3 col-xs-12 small" href="https://www.paddingleft.com">&copy; Created by Sing Ming Chen</a>
+                    <div class="col-md-3 col-xs-12 small">其他開源專案 - <a href="https://www.mvrater.com">Movie Rater</a></div>
+                </p>
+            </footer>
     </div>
     <!-- /container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
