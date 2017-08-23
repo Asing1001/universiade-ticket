@@ -14,15 +14,23 @@ var app = new Vue({
     },
     methods: {
         getTicketStatus: function () {
-            const allData = this.allTicketStatus;
-            return _.chain(allData)
-                .filter(data => !this.selectedSport || data.sport === this.selectedSport)
-                .filter(data => !this.hideSellOut || data.hasTicket)
+            const self = this;
+            return _.chain(self.allTicketStatus)
+                .filter(function (data) {
+                    return !self.selectedSport || data.sport === self.selectedSport
+                })
+                .filter(function (data) {
+                    return !self.hideSellOut || data.hasTicket
+                })
                 .groupBy('sport')
                 .value();
         },
         getSportType: function () {
-            return [''].concat(_.uniq(this.allTicketStatus.map(ticket => ticket.sport)));
+            return [''].concat(
+                _.uniq(this.allTicketStatus.map(function (ticket) {
+                    return ticket.sport;
+                }))
+            );
         },
         showSchedule: function (ticket) {
             this.selectedTicket = ticket;
