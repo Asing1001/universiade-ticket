@@ -7,7 +7,8 @@
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.15.4",
     "isomorphic-fetch": "^2.2.1",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "request": "^2.81.0"
   },
   "scripts": {
     "start": "node server.js"

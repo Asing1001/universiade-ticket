@@ -72,7 +72,7 @@
                         <div style="padding-bottom:.5em;padding-top:.3em">
                             <a v-if="status.hasTicket" class="btn btn-primary" :href="status.url" role="button">購票</a>
                             <button v-if="!status.hasTicket" class="btn btn-secondary" role="button" disabled>已售完</button>
-                            <!-- <button class="btn btn-info" @click="showSchedule(status)" role="button">賽程</a> -->
+                            <button class="btn btn-info" @click="showSchedule(status)" role="button">賽程</a>
                         </div>                        
                     </div>
                 </div>
@@ -82,8 +82,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="scheduleModalLabel">{{selectedTicket.date}} {{selectedTicket.sport}} - {{selectedTicket.place}}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <h6 class="modal-title" id="scheduleModalLabel">{{selectedTicket.date}} - {{selectedTicket.place}}</h6>
+                        <button style="margin-top:-5px;font-size:1.8em" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
                     </div>
