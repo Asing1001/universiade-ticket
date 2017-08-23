@@ -53,7 +53,7 @@
                 隱藏售完場次
             </label>
         </div>
-        <!-- Example row of columns -->
+
         <section class="card" v-for="(sportStatus, key) in getTicketStatus()">
             <div class="card-body">
                 <h4>
@@ -66,14 +66,53 @@
                 </h4>
                 <div class="row">
                     <div class="col-md-3" v-for="status in sportStatus">
-                        <p>
-                            <div>{{status.date}}</div><a :href="'https://www.google.com.tw/maps?q='+status.place">{{status.place}}</a></p>
-                        <p v-if="status.hasTicket"><a class="btn btn-primary" :href="status.url" role="button">購票</a></p>
-                        <p v-if="!status.hasTicket"><button class="btn btn-secondary" role="button" disabled>已售完</button></p>
+                        <div>
+                            <div>{{status.date}}</div><a :href="'https://www.google.com.tw/maps?q='+status.place">{{status.place}}</a>
+                        </div>
+                        <div style="padding-bottom:.5em;padding-top:.3em">
+                            <a v-if="status.hasTicket" class="btn btn-primary" :href="status.url" role="button">購票</a>
+                            <button v-if="!status.hasTicket" class="btn btn-secondary" role="button" disabled>已售完</button>
+                            <button class="btn btn-info" @click="showSchedule(status)" role="button">賽程</a>
+                        </div>                        
                     </div>
                 </div>
             </div>
         </section>
+        <div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scheduleModalLabel">{{selectedTicket.date}} {{selectedTicket.sport}} - {{selectedTicket.place}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>時間</th>
+                                    <th>項目</th>
+                                    <th>男/女</th>
+                                    <th>賽事階段</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(schedule, index) in selectedTicket.schedules">
+                                    <td>{{schedule.time}}</td>
+                                    <td>{{schedule.item}}</td>
+                                    <td>{{schedule.gender}}</td>
+                                    <td>{{schedule.stage}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <hr>
 
         <footer>
@@ -91,7 +130,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
-    <script src="main.js?v=1708220858"></script>
+    <script src="main.js?v=1708231345"></script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>

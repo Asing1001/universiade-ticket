@@ -3,6 +3,7 @@ var app = new Vue({
     data: {
         allTicketStatus: [],
         hideSellOut: false,
+        selectedTicket: { schedules: [] }
     },
     created: function () {
         var self = this;
@@ -14,6 +15,12 @@ var app = new Vue({
         getTicketStatus: function () {
             const allData = this.allTicketStatus;
             return this.hideSellOut ? _.chain(allData).filter('hasTicket').groupBy('sport').value() : _.groupBy(allData, 'sport');
+        },
+        showSchedule: function (ticket) {
+            this.selectedTicket = ticket;
+            $('#scheduleModal').modal({
+
+            })
         }
     }
 })
