@@ -71,6 +71,11 @@
                 aria-label="Star asing1001/universiade-ticket on GitHub">Star</a>
         </div>
         <div class="form-check">
+            <select v-model="selectedSport">
+                <option v-for="sport in getSportType()" v-bind:value="sport">
+                    {{ sport || '全部賽事' }}
+                </option>
+            </select>
             <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" v-model="hideSellOut">
                 隱藏售完場次

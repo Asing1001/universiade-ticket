@@ -3,7 +3,8 @@ var app = new Vue({
     data: {
         allTicketStatus: [],
         hideSellOut: false,
-        selectedTicket: { schedules: [] }
+        selectedTicket: { schedules: [] },
+        selectedSport: ''
     },
     created: function () {
         var self = this;
@@ -13,8 +14,23 @@ var app = new Vue({
     },
     methods: {
         getTicketStatus: function () {
-            const allData = this.allTicketStatus;
-            return this.hideSellOut ? _.chain(allData).filter('hasTicket').groupBy('sport').value() : _.groupBy(allData, 'sport');
+            const self = this;
+            return _.chain(self.allTicketStatus)
+                .filter(function (data) {
+                    return !self.selectedSport || data.sport === self.selectedSport
+                })
+                .filter(function (data) {
+                    return !self.hideSellOut || data.hasTicket
+                })
+                .groupBy('sport')
+                .value();
+        },
+        getSportType: function () {
+            return [''].concat(
+                _.uniq(this.allTicketStatus.map(function (ticket) {
+                    return ticket.sport;
+                }))
+            );
         },
         showSchedule: function (ticket) {
             this.selectedTicket = ticket;
