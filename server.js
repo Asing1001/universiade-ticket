@@ -57,8 +57,26 @@ app.listen(port, () => {
 
 setInterval(async () => {
     console.time('[Scheduler] getAllTicketStatus');
-    const ticketStatus = await getAllTicketStatusWithSchedule();
-    redisClient.set(ticketStatusKey, JSON.stringify(ticketStatus))
-    console.timeEnd('[Scheduler] getAllTicketStatus');
+    const newTicketStatus = await getAllTicketStatusWithSchedule();
+    redisClient.get(ticketStatusKey, async (err, strTicketStatus) => {
+        const oldTicketStatus = JSON.parse(strTicketStatus);
+        let ticketStatus;
+        if (oldTicketStatus) {
+            ticketStatus = mergeTicketStatus(oldTicketStatus, newTicketStatus);
+        } else {
+            ticketStatus = newTicketStatus;
+        }
+        redisClient.set(ticketStatusKey, JSON.stringify(ticketStatus))
+        console.timeEnd('[Scheduler] getAllTicketStatus');
+    })
 }, 1800000)
 
+const mergeTicketStatus = (oldTicketStatus, newTicketStatus) => {
+    return oldTicketStatus.map(t => {
+        const matchTicket = newTicketStatus.find(({date, sport, place}) => t.date === date && t.sport === sport && t.place === place);
+        t.hasTicket = matchTicket ? matchTicket.hasTicket : false;
+        return t;
+    });
+}
+
+module.exports = { mergeTicketStatus }

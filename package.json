@@ -4,6 +4,7 @@
     "node": "8.4.0"
   },
   "dependencies": {
+    "ava": "^0.22.0",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.15.4",
     "isomorphic-fetch": "^2.2.1",
@@ -11,6 +12,8 @@
     "request": "^2.81.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "ava *.test.js -v",
+    "test:w": "ava *.test.js -vw"
   }
 }

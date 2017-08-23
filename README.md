@@ -10,6 +10,12 @@ npm install
 
 # start
 npm start
+
+# test
+npm test
+
+# test in watch mode
+npm run test:w
 ```
 
 ## Requirements
