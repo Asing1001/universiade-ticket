@@ -9,6 +9,18 @@
     <meta name="description" content="提供世大運各項競賽即時售票狀況及賽程，每30分鐘更新一次">
     <meta property="og:description" content="提供世大運各項競賽即時售票狀況及賽程，每30分鐘更新一次">
     <title>Universiade Ticket - 世大運售票即時資訊</title>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-T8JNXFM');
+    </script>
+    <!-- End Google Tag Manager -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
     <style>
@@ -20,17 +32,11 @@
 </head>
 
 <body>
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-89564631-3', 'auto');
-        ga('send', 'pageview');
-    </script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8JNXFM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -72,8 +78,8 @@
 
     <div class="container" id="app" v-cloak>
         <div class="d-flex align-items-center justify-content-end">
-                <div class="fb-like d-flex" style="margin-right:.5em" data-layout="button_count"
-                data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            <div class="fb-like d-flex" style="margin-right:.5em" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true"
+                data-share="true"></div>
             <!-- Place this tag where you want the button to render. -->
             <a class="github-button" href="https://github.com/asing1001/universiade-ticket" data-icon="octicon-star" data-show-count="true"
                 aria-label="Star asing1001/universiade-ticket on GitHub">Star</a>
