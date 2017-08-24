@@ -1,9 +1,9 @@
 const test = require('ava');
-const {mergeTicketStatus} = require('./server');
+const { mergeTicketStatus } = require('./ticket');
 
 test('mergeTicketStatus should keep old length', t => {
     const expect = 2;
-    const oldTicketStatus = [{},{}];
+    const oldTicketStatus = [{}, {}];
     const newTicketStatus = [{}];
     t.deepEqual(expect, mergeTicketStatus(oldTicketStatus, newTicketStatus).length);
 })

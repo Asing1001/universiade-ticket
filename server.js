@@ -1,7 +1,7 @@
 const express = require('express')
 const serveStatic = require('serve-static')
 const path = require('path')
-const { getAllTicketStatus } = require('./ticket');
+const { getAllTicketStatus, mergeTicketStatus } = require('./ticket');
 const app = express()
 const redis = require('redis');
 
@@ -70,13 +70,3 @@ setInterval(async () => {
         console.timeEnd('[Scheduler] getAllTicketStatus');
     })
 }, 1800000)
-
-const mergeTicketStatus = (oldTicketStatus, newTicketStatus) => {
-    return oldTicketStatus.map(t => {
-        const matchTicket = newTicketStatus.find(({date, sport, place}) => t.date === date && t.sport === sport && t.place === place);
-        t.hasTicket = matchTicket ? matchTicket.hasTicket : false;
-        return t;
-    });
-}
-
-module.exports = { mergeTicketStatus }

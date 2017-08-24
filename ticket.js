@@ -40,4 +40,12 @@ const getTicketStatus = (sportsId) => {
     })
 }
 
-module.exports = { getAllTicketStatus }
+const mergeTicketStatus = (oldTicketStatus, newTicketStatus) => {
+    return oldTicketStatus.map(t => {
+        const matchTicket = newTicketStatus.find(({date, sport, place}) => t.date === date && t.sport === sport && t.place === place);
+        t.hasTicket = matchTicket ? matchTicket.hasTicket : false;
+        return t;
+    });
+}
+
+module.exports = { getAllTicketStatus, mergeTicketStatus }
