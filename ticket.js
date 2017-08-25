@@ -19,7 +19,7 @@ const getTicketStatus = (sportsId) => {
     return new Promise(async (resolve, reject) => {
         try {
             const $ = await getCheerio$(`${rootUrl}/schedule/17_TPE_${sportsId}`)
-            const promises = Array.from($('#schedule-info tr:has(button)').map(async (index, tr) => {
+            const results = Array.from($('#schedule-info tr:has(button)').map((index, tr) => {
                 const $tr = $(tr);
                 const $tds = $tr.find('td')
                 const ticketUrl = rootUrl + $tr.find('button').attr('onclick').split('\'')[1];
@@ -31,11 +31,11 @@ const getTicketStatus = (sportsId) => {
                     url: ticketUrl
                 }
             }));
-            const results = await Promise.all(promises);
             resolve(results);
         }
         catch (err) {
-            console.error(err)
+            console.error(err);
+            resolve([]);            
         }
     })
 }
