@@ -8,8 +8,14 @@ var app = new Vue({
     },
     created: function () {
         var self = this;
-        $.get('/api/ticketStatus').then(function (json) {
-            self.allTicketStatus = json;
+        var d = new Date();
+        var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+        var twDate = new Date(utc + (3600000 * 8));
+        $.get('/api/ticketStatus').then(function (allTicketStatus) {
+            self.allTicketStatus = allTicketStatus.filter(function (data) {
+                var isIncomingEvent = data.date.slice(8, 10) >= twDate.getDate()
+                return isIncomingEvent;
+            });
         })
     },
     methods: {
@@ -34,9 +40,7 @@ var app = new Vue({
         },
         showSchedule: function (ticket) {
             this.selectedTicket = ticket;
-            $('#scheduleModal').modal({
-
-            })
+            $('#scheduleModal').modal({})
         }
     }
 })
