@@ -13,7 +13,8 @@ app.get('/api/ticketstatus', (req, res, next) => {
     redisClient.get(ticketStatusKey, async (err, strTicketStatus) => {
         let ticketStatus;
         if (!strTicketStatus) {
-            ticketStatus = await getAllTicketStatusWithSchedule();
+            ticketStatus = await getAllTicketStatus();
+            ticketStatus = await mergeTicketSchedule(ticketStatus)
             redisClient.set(ticketStatusKey, JSON.stringify(ticketStatus))
         } else {
             ticketStatus = JSON.parse(strTicketStatus);
@@ -22,9 +23,8 @@ app.get('/api/ticketstatus', (req, res, next) => {
     })
 })
 
-const getAllTicketStatusWithSchedule = async () => {
+const mergeTicketSchedule = async (ticketStatus) => {
     return new Promise(async (resolve) => {
-        let ticketStatus = await getAllTicketStatus();
         if (ticketStatus.length > 0) {
             redisClient.get(scheduleKey, async (err, strSchedule) => {
                 const schedules = JSON.parse(strSchedule) || [];
@@ -32,6 +32,9 @@ const getAllTicketStatusWithSchedule = async () => {
                     t.schedules = schedules
                         .filter(({ date, sport, place }) => t.date === date && t.sport === sport && t.place === place)
                         .map(({ item, gender, stage, time }) => ({ item, gender, stage, time }));
+                    if (t.schedules.length === 0) {
+                        console.error('Schedules not found!, ticket:', JSON.stringify(t))
+                    }
                     return t;
                 })
                 resolve(ticketStatus)
@@ -57,12 +60,13 @@ app.listen(port, () => {
 
 setInterval(async () => {
     console.time('[Scheduler] getAllTicketStatus');
-    const newTicketStatus = await getAllTicketStatusWithSchedule();
+    const newTicketStatus = await getAllTicketStatus();
     redisClient.get(ticketStatusKey, async (err, strTicketStatus) => {
         const oldTicketStatus = JSON.parse(strTicketStatus);
         let ticketStatus;
         if (oldTicketStatus) {
             ticketStatus = mergeTicketStatus(oldTicketStatus, newTicketStatus);
+            ticketStatus = await mergeTicketSchedule(ticketStatus)
         } else {
             ticketStatus = newTicketStatus;
         }
